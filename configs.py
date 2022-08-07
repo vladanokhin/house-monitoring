@@ -39,9 +39,9 @@ class CeleryConfig:
 
     redis_port = getenv('REDIS_PORT', '6379')
 
-    broker_url = 'redis://' + redis_host + ':' + redis_port + '/0'
+    broker_url = getenv('REDIS_URI', 'redis://' + redis_host + ':' + redis_port + '/0')
 
-    result_backend = 'redis://' + redis_host + ':' + redis_port + '/0'
+    result_backend = getenv('REDIS_URI', 'redis://' + redis_host + ':' + redis_port + '/0')
 
     task_serializer = 'json'
 
@@ -58,8 +58,8 @@ class CeleryConfig:
     task_time_limit = 60 * 30  # 30 minutes
 
     beat_schedule = {
-        'test-task': {
+        'monitoring': {
             'task': 'celery_parsing.tasks.parse_olx',
-            'schedule': crontab(minute='*/3'),
+            'schedule': crontab(minute='*/200'),
         }
     }

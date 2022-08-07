@@ -16,7 +16,7 @@ services:
     container_name: celery
     build:
         context: .
-        dockerfile: docker/Dockerfile
+        dockerfile: Dockerfile
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
@@ -28,7 +28,7 @@ services:
     container_name: celery-beat
     build:
         context: .
-        dockerfile: docker/Dockerfile
+        dockerfile: Dockerfile
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
