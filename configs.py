@@ -39,9 +39,11 @@ class CeleryConfig:
 
     redis_port = getenv('REDIS_PORT', '6379')
 
-    broker_url = getenv('REDIS_URI', 'redis://' + redis_host + ':' + redis_port + '/0')
+    redis_password = getenv('REDIS_PASSWORD', '123')
 
-    result_backend = getenv('REDIS_URI', 'redis://' + redis_host + ':' + redis_port + '/0')
+    broker_url = getenv('REDIS_URL')
+
+    result_backend = getenv('REDIS_URL')
 
     task_serializer = 'json'
 
@@ -60,6 +62,6 @@ class CeleryConfig:
     beat_schedule = {
         'monitoring': {
             'task': 'celery_parsing.tasks.parse_olx',
-            'schedule': crontab(minute='*/200'),
+            'schedule': crontab(minute=f'*/{getenv("CELERY_PARSING_INTERVAL", "10")}'),
         }
     }

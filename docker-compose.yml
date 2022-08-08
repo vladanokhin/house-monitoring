@@ -1,0 +1,39 @@
+version: "3.7"
+
+
+services:
+#  redis:
+#    container_name: redis
+#    image: redis:alpine
+#    ports:
+#      - "6379:6379"
+#    environment:
+#        - REDIS_PASSWORD=redis
+#        - REDIS_PORT=6379
+#        - REDIS_HOST=0.0.0.0
+
+  celery:
+    container_name: celery
+    build:
+        context: .
+        dockerfile: docker/Dockerfile
+    env_file:
+      - .env
+    command: celery -A celery_parsing worker -l INFO
+    volumes:
+      - ./:/app
+    depends_on:
+      - redis
+
+  celery-beat:
+    container_name: celery-beat
+    build:
+        context: .
+        dockerfile: docker/Dockerfile
+    env_file:
+      - .env
+    command: celery -A celery_parsing beat -l INFO -s data/celerybeat-schedule
+    volumes:
+       - ./:/app
+    depends_on:
+      - celery

@@ -23,7 +23,7 @@ class BrowserParser:
         self.__path_to_driver = Path(Path(__file__).parent, self.cfg.BROWSER_DRIVER)
 
         browser_options = FirefoxOptions()
-        # browser_options.add_argument('--headless')
+        browser_options.add_argument('--headless')
         browser_options.add_argument('--disable-gpu')
         browser_options.add_argument('--no-sandbox')
 
