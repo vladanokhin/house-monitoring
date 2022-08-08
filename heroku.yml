@@ -1,7 +1,7 @@
 build:
   docker:
-    celery: docker/Dockerfile
-    celery-beat: docker/Dockerfile
+    celery: Dockerfile
+    celery-beat: Dockerfile
 run:
   celery: celery -A celery_parsing worker -l INFO
   celery-beat: celery -A celery_parsing beat -l INFO -s data/celerybeat-schedule
