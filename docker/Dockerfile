@@ -14,7 +14,7 @@ RUN chown -R nobody:nogroup /app
 
 RUN apt-get update
 
-RUN pip install -r ../requirements.txt
+RUN pip install -r app/requirements.txt
 
 # Install the mozilla firefox browser
 RUN apt-get install -y --no-install-recommends firefox
