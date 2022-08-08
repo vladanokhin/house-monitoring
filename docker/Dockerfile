@@ -14,6 +14,9 @@ RUN chown -R nobody:nogroup /app
 
 RUN apt-get update
 
+RUN pip freeze > requirements_all.txt
+RUN pip uninstall -r requirements_all.txt -y
+
 RUN pip install -r app/requirements.txt
 
 # Install the mozilla firefox browser
