@@ -9,6 +9,7 @@ def parse_olx():
     client = TelegramBot()
     houses = olx.search_new_houses()
     olx._browser.quit()
-    msg = olx.prepare_message(houses)
-    client.notification_users(msg)
+    if len(houses) > 0:
+        msg = olx.prepare_message(houses)
+        client.notification_users(msg)
 
