@@ -8,16 +8,15 @@ WORKDIR /app
 
 COPY . .
 
+COPY requirements.txt requirements.txt
+
 RUN echo "deb http://deb.debian.org/debian/ unstable main contrib non-free" >> /etc/apt/sources.list.d/debian.list
 
 RUN chown -R nobody:nogroup /app
 
 RUN apt-get update
 
-RUN pip freeze > requirements_all.txt
-RUN pip uninstall -r requirements_all.txt -y
-
-RUN pip install -r app/requirements.txt
+RUN pip install -r ../requirements.txt
 
 # Install the mozilla firefox browser
 RUN apt-get install -y --no-install-recommends firefox
