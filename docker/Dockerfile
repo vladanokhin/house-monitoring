@@ -4,13 +4,13 @@ FROM python:3.8-slim
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /app
+# WORKDIR /app
 
 COPY . .
 
 RUN echo "deb http://deb.debian.org/debian/ unstable main contrib non-free" >> /etc/apt/sources.list.d/debian.list
 
-RUN chown -R nobody:nogroup /app
+# RUN chown -R nobody:nogroup /app
 
 RUN apt-get update
 
