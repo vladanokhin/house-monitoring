@@ -28,10 +28,7 @@ class Config:
     def URL_PARSING(self):
         return getenv('URL_PARSING', 'http://google.com/')
 
-    NOTIFICATION_USERS = [
-        476489188,
-        729407135
-    ]
+    NOTIFICATION_USERS = getenv('NOTIFICATION_USERS', '').split('|')
 
 
 class CeleryConfig:
