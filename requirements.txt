@@ -30,7 +30,7 @@ pytz==2022.1
 redis==4.3.4
 requests==2.28.1
 rsa==4.9
-selenium==4.3.0
+selenium==4.8.3
 six==1.16.0
 sniffio==1.2.0
 sortedcontainers==2.4.0
