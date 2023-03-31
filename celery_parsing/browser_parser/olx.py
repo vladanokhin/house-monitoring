@@ -14,6 +14,7 @@ class OlxParser(BrowserParser):
         self.celery_cfg = CeleryConfig()
         self.redis = Redis(host=self.celery_cfg.redis_host,
                            port=self.celery_cfg.redis_port,
+                           username='default',
                            password=self.celery_cfg.redis_password,
                            db=1)
 

@@ -22,5 +22,5 @@ class TelegramBot:
         """
         for user_id in self.cfg.NOTIFICATION_USERS:
             self.client.loop.run_until_complete(
-                self.client.send_message(user_id, message, link_preview=False)
+                self.client.send_message(int(user_id), message, link_preview=False)
             )

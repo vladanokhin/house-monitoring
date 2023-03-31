@@ -8,9 +8,9 @@ ENV PYTHONUNBUFFERED 1
 
 COPY . .
 
-RUN echo "deb http://deb.debian.org/debian/ unstable main contrib non-free" >> /etc/apt/sources.list.d/debian.list
-
 # RUN chown -R nobody:nogroup /app
+
+RUN echo "deb http://deb.debian.org/debian/ unstable main contrib non-free" >> /etc/apt/sources.list.d/debian.list
 
 RUN apt-get update
 
